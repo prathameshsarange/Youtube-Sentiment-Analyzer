@@ -6,6 +6,9 @@
 
 Sentix is a web application that analyzes the sentiment of comments on any YouTube video. By simply pasting a YouTube video link, this tool fetches the comments, processes them using Natural Language Processing (NLP), and categorizes the general public reaction as Positive, Negative, or Neutral.
 
+## 🌐 Live Demo
+[👉 Click here to try Sentix live](https://youtube-sentiment-analyzer-cij3.onrender.com)
+
 ## ✨ Features
 
 - **Instant Analysis:** Enter any YouTube URL to get immediate sentiment insights.
@@ -33,41 +36,39 @@ Ensure you have Python installed on your system. You will also need a Google Clo
 ### Installation
 
 1. **Clone the repository:**
-   ```bash
-   git clone <git clone https://github.com/prathameshsarange/Youtube-Sentiment-Analyzer.git>
+```bash
+   git clone https://github.com/prathameshsarange/Youtube-Sentiment-Analyzer.git
    cd "youtube sentiment analyzer"
-   ```
+```
 
 2. **Install required dependencies:**
-   It is recommended to use a virtual environment.
-   ```bash
+```bash
    pip install -r requirements.txt
-   ```
+```
 
 3. **Configure the API Key:**
-   - Create a `.env` file in the project's root directory.
+   - Create a `.env` file in the project root directory.
    - Add your YouTube Data API v3 Key:
-     ```env
+```env
      YOUTUBE_API_KEY=your_api_key_here
-     ```
+```
 
 ### Running the Web Application
 
 1. Start the Flask server:
-   ```bash
+```bash
    python app.py
-   ```
+```
 2. Open your web browser and navigate to `http://127.0.0.1:5000/`.
 3. Paste a YouTube video URL into the input field and click Analyze!
 
 ### Running the Standalone Scraper
 
-If you prefer to run the script locally and view a visual chart:
 1. Edit `scraper.py` and change the `VIDEO_URL` variable to your desired video.
 2. Run the script:
-   ```bash
+```bash
    python scraper.py
-   ```
+```
 
 ## 📁 Project Structure
 
@@ -77,10 +78,11 @@ If you prefer to run the script locally and view a visual chart:
 ├── requirements.txt   # Python dependencies
 ├── .env               # Environment variables (API Key)
 ├── templates/
-│   ├── index.html     # Homepage with the URL input form (Tailwind styling)
+│   ├── index.html     # Homepage with the URL input form
 │   └── result.html    # Results display dashboard
 └── README.md          # Project documentation
 ```
+
 ## 📸 Screenshots
 
 ### Home Page
