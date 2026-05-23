@@ -1,10 +1,10 @@
-# 🎥 YouTube Sentiment Analyzer
+# 🎥 Sentix | YouTube Sentiment Analyzer
 
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)
 ![YouTube API](https://img.shields.io/badge/YouTube_API-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white)
 
-A web application that analyzes the sentiment of comments on any YouTube video. By simply pasting a YouTube video link, this tool fetches the comments, processes them using Natural Language Processing (NLP), and categorizes the general public reaction as Positive, Negative, or Neutral.
+Sentix is a web application that analyzes the sentiment of comments on any YouTube video. By simply pasting a YouTube video link, this tool fetches the comments, processes them using Natural Language Processing (NLP), and categorizes the general public reaction as Positive, Negative, or Neutral.
 
 ## ✨ Features
 
@@ -17,10 +17,11 @@ A web application that analyzes the sentiment of comments on any YouTube video. 
 ## 🛠️ Technologies Used
 
 - **Backend:** Python, Flask
-- **Frontend:** HTML, CSS (Jinja2 Templates)
+- **Frontend:** HTML, TailwindCSS (via CDN)
 - **APIs & Libraries:**
   - `google-api-python-client` (YouTube Data API v3)
   - `vaderSentiment` (Lexicon and rule-based sentiment analysis)
+  - `python-dotenv` (Environment variable management)
   - `matplotlib` (For data visualization in the standalone scraper)
 
 ## 🚀 Getting Started
@@ -40,13 +41,15 @@ Ensure you have Python installed on your system. You will also need a Google Clo
 2. **Install required dependencies:**
    It is recommended to use a virtual environment.
    ```bash
-   pip install flask google-api-python-client vaderSentiment matplotlib
+   pip install -r requirements.txt
    ```
 
 3. **Configure the API Key:**
-   - In `app.py` and `scraper.py`, locate the `API_KEY` variable.
-   - Replace the default value with your own YouTube Data API v3 Key.
-   > **⚠️ Security Note:** Currently, the API key is hardcoded. Before publishing this project publicly, it is highly recommended to store your API key in an environment variable (e.g., using `python-dotenv`) to prevent unauthorized usage.
+   - Create a `.env` file in the project's root directory.
+   - Add your YouTube Data API v3 Key:
+     ```env
+     YOUTUBE_API_KEY=your_api_key_here
+     ```
 
 ### Running the Web Application
 
@@ -71,8 +74,10 @@ If you prefer to run the script locally and view a visual chart:
 ```text
 ├── app.py             # Main Flask web application
 ├── scraper.py         # Standalone script for terminal analysis & charting
+├── requirements.txt   # Python dependencies
+├── .env               # Environment variables (API Key)
 ├── templates/
-│   ├── index.html     # Homepage with the URL input form
+│   ├── index.html     # Homepage with the URL input form (Tailwind styling)
 │   └── result.html    # Results display dashboard
 └── README.md          # Project documentation
 ```
