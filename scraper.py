@@ -1,7 +1,8 @@
 from googleapiclient.discovery import build
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 import matplotlib.pyplot as plt
-API_KEY = "AIzaSyDhGZEQKDXa1REhw-NvVvP1RLrpLPwXYEg" 
+import os
+API_KEY = os.environ.get("YOUTUBE_API_KEY", "AIzaSyD4LOPClTonwDKXpwzHiX8_BqUSdHM0oR8")
 VIDEO_URL = "https://www.youtube.com/watch?v=nZaDmhlMBOE"
 analyzer = SentimentIntensityAnalyzer()
 # collecting the video id by using the url

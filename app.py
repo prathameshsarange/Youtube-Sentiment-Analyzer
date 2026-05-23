@@ -4,9 +4,9 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 import csv
 import io
 import html
-
+import os 
 app = Flask(__name__)
-API_KEY = "AIzaSyDhGZEQKDXa1REhw-NvVvP1RLrpLPwXYEg"
+API_KEY = os.environ.get("YOUTUBE_API_KEY", "AIzaSyD4LOPClTonwDKXpwzHiX8_BqUSdHM0oR8")
 analyzer = SentimentIntensityAnalyzer()
 
 stored_results = []
