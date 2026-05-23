@@ -87,7 +87,7 @@ If you prefer to run the script locally and view a visual chart:
 ![Home](screenshots/home.png)
 
 ### Sentiment Analysis Result
-![Result](screenshots/result.png)
+![Result](screenshots/Result.png)
 
 ## 🤝 Contributing
 
