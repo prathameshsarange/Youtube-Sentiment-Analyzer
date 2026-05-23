@@ -5,8 +5,10 @@ import csv
 import io
 import html
 import os 
+from dotenv import load_dotenv
+load_dotenv()
 app = Flask(__name__)
-API_KEY = os.environ.get("YOUTUBE_API_KEY", "AIzaSyD4LOPClTonwDKXpwzHiX8_BqUSdHM0oR8")
+API_KEY = os.environ.get("YOUTUBE_API_KEY")
 analyzer = SentimentIntensityAnalyzer()
 
 stored_results = []
