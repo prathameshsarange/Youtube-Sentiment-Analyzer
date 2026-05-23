@@ -81,6 +81,13 @@ If you prefer to run the script locally and view a visual chart:
 │   └── result.html    # Results display dashboard
 └── README.md          # Project documentation
 ```
+## 📸 Screenshots
+
+### Home Page
+![Home](screenshots/home.png)
+
+### Sentiment Analysis Result
+![Result](screenshots/result.png)
 
 ## 🤝 Contributing
 
