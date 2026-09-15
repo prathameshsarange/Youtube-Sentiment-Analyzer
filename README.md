@@ -86,10 +86,10 @@ Ensure you have Python installed on your system. You will also need a Google Clo
 ## 📸 Screenshots
 
 ### Home Page
-![Home](screenshots/home.png)
+<img src="./screenshots/home.png" alt="Home Page" width="900" />
 
 ### Sentiment Analysis Result
-![Result](screenshots/Result.png)
+<img src="./screenshots/Result.png" alt="Sentiment Analysis Result" width="900" />
 
 ## 🤝 Contributing
 
