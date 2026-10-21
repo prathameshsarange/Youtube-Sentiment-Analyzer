@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>{% block title %}Sentix - YouTube Comment Sentiment Analyzer{% endblock %}</title>
+    {% block meta %}{% endblock %}
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Geist:wght@400&family=JetBrains+Mono:wght@500&display=swap"
+        rel="stylesheet" />
+
+    <!-- Material Symbols -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+
+    <!-- Local Tailwind CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='tailwind.css') }}" />
+</head>
+
+<body class="font-body-lg overflow-x-hidden mesh-gradient min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav
+        class="fixed top-0 left-0 w-full z-50 flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-4 gap-2 bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-2xl">
+
+        <a href="/"
+            class="text-2xl md:text-3xl font-bold tracking-tighter text-primary hover:text-primary-fixed-dim transition-colors text-center">
+            Sentix
+        </a>
+
+        <div class="flex items-center gap-4">
+            {% if request.path == '/' %}
+            <div class="text-on-surface-variant text-xs md:text-sm text-center">
+                YouTube Comment Sentiment Analyzer
+            </div>
+            {% else %}
+            <a href="/"
+                class="text-xs md:text-sm text-on-surface-variant font-medium hover:text-primary transition-colors duration-300 text-center">
+                New Analysis
+            </a>
+            {% endif %}
+        </div>
+
+    </nav>
+
+    <!-- Main Content -->
+    {% block content %}{% endblock %}
+
+    <!-- Footer -->
+    <footer
+        class="w-full py-8 px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-4 text-center bg-surface-container-lowest border-t border-white/5 mt-auto">
+
+        <div class="text-xl md:text-2xl font-bold text-primary">
+            Sentix
+        </div>
+
+        <p class="text-sm text-on-surface-variant opacity-60">
+            © 2026 Sentix. Built by Prathamesh Sarange
+        </p>
+
+        <div class="flex items-center gap-6 text-sm text-on-surface-variant">
+            <a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">GitHub</a>
+            <a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">LinkedIn</a>
+        </div>
+
+    </footer>
+
+</body>
+
+</html>

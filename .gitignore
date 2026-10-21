@@ -3,3 +3,5 @@ __pycache__/
 .env
 *.csv
 output.csv
+node_modules/
+venv/

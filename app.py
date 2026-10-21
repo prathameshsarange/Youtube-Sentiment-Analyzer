@@ -108,6 +108,21 @@ def download():
     return Response(output, mimetype="text/csv",
                     headers={"Content-Disposition": "attachment;filename=sentiment_results.csv"})
 
+@app.route("/robots.txt")
+def robots_txt():
+    content = "User-agent: *\nAllow: /\nSitemap: https://youtube-sentiment-analyzer-cij3.onrender.com/sitemap.xml\n"
+    return Response(content, mimetype="text/plain")
+
+@app.route("/sitemap.xml")
+def sitemap_xml():
+    content = """<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://youtube-sentiment-analyzer-cij3.onrender.com/</loc>
+  </url>
+</urlset>"""
+    return Response(content, mimetype="application/xml")
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=False)

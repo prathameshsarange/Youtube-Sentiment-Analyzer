@@ -1,161 +1,90 @@
-<!DOCTYPE html>
-<html class="dark" lang="en">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Sentix | YouTube Sentiment Analysis</title>
+{% block title %}Sentix - YouTube Comment Sentiment Analyzer{% endblock %}
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Geist:wght@400&family=JetBrains+Mono:wght@500&display=swap"
-        rel="stylesheet" />
+{% block meta %}
+<meta name="description" content="Paste any YouTube video URL to instantly analyze comment sentiment with Sentix. Get positive, negative, and neutral metrics and top comments." />
+<link rel="canonical" href="https://youtube-sentiment-analyzer-cij3.onrender.com/" />
+<link rel="icon" type="image/png" href="/static/favicon.png" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Sentix - YouTube Comment Sentiment Analyzer" />
+<meta property="og:description" content="Paste any YouTube video URL to instantly analyze comment sentiment with Sentix. Get positive, negative, and neutral metrics and top comments." />
+<meta property="og:url" content="https://youtube-sentiment-analyzer-cij3.onrender.com/" />
+<meta property="og:image" content="https://youtube-sentiment-analyzer-cij3.onrender.com/static/preview.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Sentix - YouTube Comment Sentiment Analyzer" />
+<meta name="twitter:description" content="Paste any YouTube video URL to instantly analyze comment sentiment with Sentix. Get positive, negative, and neutral metrics and top comments." />
+<meta name="twitter:image" content="https://youtube-sentiment-analyzer-cij3.onrender.com/static/preview.png" />
+{% endblock %}
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-        rel="stylesheet" />
-
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-
-    <script>
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "surface-container-lowest": "#060e20",
-                        "secondary": "#89ceff",
-                        "on-surface-variant": "#c7c4d7",
-                        "surface": "#0b1326",
-                        "primary": "#c0c1ff",
-                        "on-primary": "#1000a9",
-                        "primary-container": "#8083ff",
-                        "on-primary-container": "#0d0096",
-                        "outline": "#908fa0",
-                        "on-surface": "#dae2fd",
-                    },
-
-                    spacing: {
-                        "margin-desktop": "64px",
-                        "margin-mobile": "16px",
-                    },
-
-                    fontFamily: {
-                        "label-md": ["JetBrains Mono"],
-                        "body-lg": ["Geist"],
-                        "display-lg": ["Sora"],
-                        "headline-md": ["Sora"],
-                    },
-                },
-            },
-        }
-    </script>
-
-    <style>
-        body {
-            background-color: #0b1326;
-            color: #dae2fd;
-        }
-
-        .glass-card {
-            backdrop-filter: blur(12px);
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .mesh-gradient {
-            background-image:
-                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(128, 131, 255, 0.1) 0px, transparent 50%);
-        }
-
-        .neon-glow-primary {
-            box-shadow: 0px 8px 24px rgba(128, 131, 255, 0.3);
-        }
-
-        .neon-glow-primary:hover {
-            box-shadow: 0px 8px 32px rgba(128, 131, 255, 0.5);
-        }
-    </style>
-</head>
-
-<body class="font-body-lg overflow-x-hidden mesh-gradient min-h-screen flex flex-col">
-
-    <!-- Navbar -->
-    <nav
-        class="fixed top-0 left-0 w-full z-50 flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-4 gap-2 bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-2xl">
-
-        <div class="text-2xl md:text-3xl font-bold tracking-tighter text-primary text-center">
-            Sentix
-        </div>
-
-        <div class="text-on-surface-variant text-xs md:text-sm text-center">
-            YouTube Comment Sentiment Analyzer
-        </div>
-
-    </nav>
+{% block content %}
+<main class="flex-grow flex flex-col items-center justify-center pt-24 pb-12">
 
     <!-- Hero Section -->
-    <main class="flex-grow flex items-center justify-center">
+    <section class="flex flex-col items-center justify-center text-center px-margin-mobile md:px-margin-desktop py-12 md:py-16 w-full">
 
-        <section
-            class="flex flex-col items-center justify-center text-center px-margin-mobile md:px-margin-desktop py-20">
+        <div class="max-w-4xl space-y-8 mx-auto">
 
-            <div class="max-w-4xl space-y-8">
+            <h1 class="text-4xl md:text-6xl font-bold text-primary tracking-tight leading-tight">
+                Unlock the Pulse of <br class="hidden md:block" />
+                <span class="text-secondary">Your Audience</span>
+            </h1>
 
-                <h1 class="text-4xl md:text-6xl font-bold text-primary tracking-tight leading-tight">
-                    Unlock the Pulse of <br class="hidden md:block" />
-                    <span class="text-secondary">Your Audience</span>
-                </h1>
+            <p class="text-base md:text-lg text-on-surface-variant max-w-2xl mx-auto">
+                Paste any YouTube video URL and instantly analyze the sentiment of its comments —
+                Positive, Negative, or Neutral.
+            </p>
 
-                <p class="text-base md:text-lg text-on-surface-variant max-w-2xl mx-auto">
-                    Paste any YouTube video URL and instantly analyze the sentiment of its comments —
-                    Positive, Negative, or Neutral.
-                </p>
+            <form action="/analyze" method="POST" class="mt-12 w-full max-w-2xl mx-auto">
 
-                <form action="/analyze" method="POST" class="mt-12 w-full max-w-2xl mx-auto">
+                <div class="flex flex-col md:flex-row items-center gap-4 w-full glass-card p-2 rounded-xl">
 
-                    <div
-                        class="flex flex-col md:flex-row items-center gap-4 w-full glass-card p-2 rounded-xl">
+                    <div class="flex-1 flex items-center px-4 w-full">
+                        <span class="material-symbols-outlined text-outline mr-3">link</span>
 
-                        <div class="flex-1 flex items-center px-4 w-full">
-                            <span class="material-symbols-outlined text-outline mr-3">link</span>
-
-                            <input
-                                class="bg-transparent border-none focus:ring-0 text-on-surface w-full py-3 focus:outline-none text-sm md:text-base"
-                                placeholder="https://www.youtube.com/watch?v=..."
-                                type="url"
-                                name="video_url"
-                                required />
-                        </div>
-
-                        <button
-                            type="submit"
-                            class="w-full md:w-auto bg-primary text-on-primary px-8 py-3 rounded-lg font-bold neon-glow-primary hover:scale-105 active:scale-95 transition-all">
-
-                            Analyze Comments
-
-                        </button>
+                        <input
+                            class="bg-transparent border-none focus:ring-0 text-on-surface w-full py-3 focus:outline-none text-sm md:text-base"
+                            placeholder="https://www.youtube.com/watch?v=..."
+                            type="url"
+                            name="video_url"
+                            aria-label="YouTube video URL"
+                            required />
                     </div>
 
-                </form>
-            </div>
-        </section>
-    </main>
+                    <button
+                        type="submit"
+                        class="w-full md:w-auto bg-primary text-on-primary px-8 py-3 rounded-lg font-bold neon-glow-primary hover:scale-105 active:scale-95 transition-all">
+                        Analyze Comments
+                    </button>
+                </div>
 
-    <!-- Footer -->
-    <footer
-        class="w-full py-8 px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-2 text-center bg-surface-container-lowest border-t border-white/5">
-
-        <div class="text-xl md:text-2xl font-bold text-primary">
-            Sentix
+            </form>
         </div>
+    </section>
 
-        <p class="text-sm text-on-surface-variant opacity-60">
-            © 2026 Sentix . Built by Prathamesh Sarange
-        </p>
+    <!-- How It Works Section -->
+    <section class="w-full max-w-4xl px-margin-mobile md:px-margin-desktop py-8">
+        <div class="glass-card p-6 md:p-8 rounded-2xl">
+            <h2 class="text-2xl md:text-3xl font-bold text-primary mb-6 text-center">How It Works</h2>
+            <ol class="grid grid-cols-1 md:grid-cols-3 gap-6 list-none p-0 m-0">
+                <li class="flex flex-col items-center text-center p-5 rounded-xl bg-white/[0.02] border border-white/5">
+                    <span class="w-8 h-8 rounded-full bg-primary/20 text-primary font-bold flex items-center justify-center mb-3">1</span>
+                    <h3 class="font-bold text-on-surface mb-2">Paste a Link</h3>
+                    <p class="text-sm text-on-surface-variant">Paste a YouTube link.</p>
+                </li>
+                <li class="flex flex-col items-center text-center p-5 rounded-xl bg-white/[0.02] border border-white/5">
+                    <span class="w-8 h-8 rounded-full bg-primary/20 text-primary font-bold flex items-center justify-center mb-3">2</span>
+                    <h3 class="font-bold text-on-surface mb-2">Fetch Comments</h3>
+                    <p class="text-sm text-on-surface-variant">Sentix fetches comments with the YouTube Data API.</p>
+                </li>
+                <li class="flex flex-col items-center text-center p-5 rounded-xl bg-white/[0.02] border border-white/5">
+                    <span class="w-8 h-8 rounded-full bg-primary/20 text-primary font-bold flex items-center justify-center mb-3">3</span>
+                    <h3 class="font-bold text-on-surface mb-2">Score Sentiment</h3>
+                    <p class="text-sm text-on-surface-variant">VADER scores each comment as positive, negative or neutral.</p>
+                </li>
+            </ol>
+        </div>
+    </section>
 
-    </footer>
-
-</body>
-
-</html>
+</main>
+{% endblock %}

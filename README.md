@@ -44,9 +44,15 @@ Ensure you have Python installed on your system. You will also need a Google Clo
 2. **Install required dependencies:**
 ```bash
    pip install -r requirements.txt
+   npm install
 ```
 
-3. **Configure the API Key:**
+3. **Build Tailwind CSS:**
+```bash
+   npm run build:css
+```
+
+4. **Configure the API Key:**
    - Create a `.env` file in the project root directory.
    - Add your YouTube Data API v3 Key:
 ```env
@@ -76,8 +82,13 @@ Ensure you have Python installed on your system. You will also need a Google Clo
 ├── app.py             # Main Flask web application
 ├── scraper.py         # Standalone script for terminal analysis & charting
 ├── requirements.txt   # Python dependencies
+├── package.json       # Node dependencies and build scripts
+├── tailwind.config.js # Tailwind CSS configuration
+├── input.css          # Tailwind CSS input styles
+├── static/            # Static assets (compiled CSS, images)
 ├── .env               # Environment variables (API Key)
 ├── templates/
+│   ├── base.html      # Shared layout with head, navbar, footer
 │   ├── index.html     # Homepage with the URL input form
 │   └── result.html    # Results display dashboard
 └── README.md          # Project documentation
@@ -89,7 +100,7 @@ Ensure you have Python installed on your system. You will also need a Google Clo
 <img src="./screenshots/home.png" alt="Home Page" width="900" />
 
 ### Sentiment Analysis Result
-<img src="./screenshots/Result.png" alt="Sentiment Analysis Result" width="900" />
+<img src="./screenshots/result.png" alt="Sentiment Analysis Result" width="900" />
 
 ## 🤝 Contributing
 
